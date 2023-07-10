@@ -53,6 +53,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let greeter_service = 
     GreeterServer::new(MyGreeter::default());
 
+    println!("hosting on addr {addr}");
+
     Server::builder()
         .add_service(greeter_service)
         .serve(addr)

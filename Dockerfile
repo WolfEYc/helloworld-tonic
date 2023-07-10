@@ -13,4 +13,4 @@ RUN cargo install --bin helloworld-server --path .
 EXPOSE 50051
 
 
-CMD ["helloworld-server", "--host", "0.0.0.0"]
+CMD ["helloworld-server"]
