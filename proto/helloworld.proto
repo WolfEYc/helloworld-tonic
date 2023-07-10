@@ -3,7 +3,8 @@ package helloworld;
 
 service Greeter {
     // Our SayHello rpc accepts HelloRequests and returns HelloReplies
-    rpc SayHello(HelloRequest) returns(HelloReply);
+    rpc SayHello(HelloRequest) returns(HelloResponse);
+    rpc SayBye(ByeByeRequest) returns(ByeByeResponse);
 }
 
 message HelloRequest {
@@ -11,9 +12,19 @@ message HelloRequest {
     string name = 1;
 }
 
-message HelloReply {
+message HelloResponse {
     // Reply contains the greeting message
     string message = 1;
 }
+
+message ByeByeRequest {
+    int32 satisfactionLevel = 1;
+}
+
+message ByeByeResponse {
+    string byeByeMsg = 1;
+}
+
+
 
 //wsup gamers

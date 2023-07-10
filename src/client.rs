@@ -1,5 +1,6 @@
 use hello_world::greeter_client::GreeterClient;
-use hello_world::HelloRequest;
+use hello_world::{HelloRequest, ByeByeRequest};
+
 
 pub mod hello_world {
     tonic::include_proto!("helloworld");
@@ -8,7 +9,7 @@ pub mod hello_world {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut client = 
-    GreeterClient::connect("http://127.0.0.1:50051").await?;
+    GreeterClient::connect("http://[::1]:50051").await?;
 
     let request = tonic::Request::new(
     HelloRequest {
@@ -17,7 +18,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let response = client.say_hello(request).await?;
 
-    println!("RESPONSE={:?}", response);
+    println!("BYE RESPONSE={:?}", response);
+
+    let request = tonic::Request::new(
+    ByeByeRequest {
+        satisfaction_level: 5,
+    });
+
+    let response = client.say_bye(request).await?;
+
+    println!("BYE RESPONSE={:?}", response);
 
     Ok(())
 }
