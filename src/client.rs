@@ -9,7 +9,7 @@ pub mod hello_world {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut client = 
-    GreeterClient::connect("http://helloworld-tonic-lonky.ondigitalocean.app:50051").await?;
+    GreeterClient::connect("https://helloworld-tonic-xomlbq5lta-vp.a.run.app:50051").await?;
 
     let request = tonic::Request::new(
     HelloRequest {
